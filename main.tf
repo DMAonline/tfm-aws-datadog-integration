@@ -56,7 +56,7 @@ data "aws_iam_policy_document" "dd_integration_core" {
 
 resource "aws_iam_policy" "dd_account_integration_core" {
   name        = "DatadogAWSIntegrationCorePolicy"
-  path        = "/datadog"
+  path        = "/datadog/"
   description = "DatadogAWSIntegrationCorePolicy"
   policy      = "${data.aws_iam_policy_document.dd_integration_core.json}"
 }
