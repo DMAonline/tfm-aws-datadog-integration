@@ -1,6 +1,8 @@
 module "aws_dd_integration" {
   source = "../../modules/aws_dd_integration"
 
+  create_policy = "${var.enable_integration}"
+
   integration_name = "EC2SpotFleet"
 
   # Unknown - Based of EC2 integraiton

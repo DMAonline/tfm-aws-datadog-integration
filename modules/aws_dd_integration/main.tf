@@ -22,6 +22,11 @@ variable "policy_path" {
   default     = "/datadog"
 }
 
+variable "create_policy" {
+  description = "Whether to create the policy or not"
+  default     = true
+}
+
 data "aws_iam_policy_document" "dd_integration" {
   statement {
     sid = "DataDogAWSIntegration-${var.integration_name}"
@@ -35,6 +40,7 @@ data "aws_iam_policy_document" "dd_integration" {
 }
 
 resource "aws_iam_policy" "dd_integration" {
+  count       = "${var.create_policy}"
   name        = "DatadogAWSIntegration-${var.integration_name}-Policy"
   path        = "${var.policy_path}"
   description = "DatadogAWSIntegration-${var.integration_name}-Policy"
@@ -42,6 +48,7 @@ resource "aws_iam_policy" "dd_integration" {
 }
 
 resource "aws_iam_role_policy_attachment" "allow_dd_core_integration" {
+  count      = "${var.create_policy}"
   role       = "${var.dd_aws_role_name}"
   policy_arn = "${aws_iam_policy.dd_integration.arn}"
 }
