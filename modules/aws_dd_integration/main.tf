@@ -29,7 +29,7 @@ variable "create_policy" {
 
 data "aws_iam_policy_document" "dd_integration" {
   statement {
-    sid = "DataDogAWSIntegration-${var.integration_name}"
+    sid = "DataDogAWSIntegration${var.integration_name}"
 
     actions = "${var.policy_actions}"
 
