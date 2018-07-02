@@ -19,7 +19,7 @@ variable "integration_name" {
 
 variable "policy_path" {
   description = "Path in which to store the policy"
-  default     = "/datadog"
+  default     = "/datadog/"
 }
 
 variable "create_policy" {
