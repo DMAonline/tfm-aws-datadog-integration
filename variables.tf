@@ -1,4 +1,4 @@
-variable "datadog_external_id" {}
+variable "datadog_sts_external_id" {}
 
 variable "datadog_aws_account_id" {
   default = "464622532012"
