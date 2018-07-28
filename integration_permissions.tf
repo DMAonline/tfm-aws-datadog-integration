@@ -97,6 +97,11 @@ module "dd_integration_cloudtrail" {
   source             = "./integrations/cloudtrail"
 }
 
+module "dd_integration_cloudwatch" {
+  enable_integration = "${local.cloudwatch_enabled}"
+  source             = "./integrations/cloudwatch"
+}
+
 module "dd_integration_code_deploy" {
   enable_integration = "${local.code_deploy_enabled}"
   source             = "./integrations/code_deploy"
