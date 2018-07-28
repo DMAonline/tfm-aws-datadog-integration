@@ -11,5 +11,7 @@ module "aws_dd_integration" {
   policy_actions = [
     "s3:ListAllMyBuckets",
     "s3:GetBucketTagging",
+    "s3:GetObject",
+    "s3:ListObjects",
   ]
 }
