@@ -11,6 +11,7 @@ locals {
   cloudwatch_enabled                 = "${lookup(local.booleans, contains(var.integrations, "cloudwatch"), false)}"
   code_deploy_enabled                = "${lookup(local.booleans, contains(var.integrations, "code_deploy"), false)}"
   database_migration_service_enabled = "${lookup(local.booleans, contains(var.integrations, "database_migration_service"), false)}"
+  datadog_logging_enabled            = "${lookup(local.booleans, contains(var.integrations, "datadog_logging"), false)}"
   ddos_protection_enabled            = "${lookup(local.booleans, contains(var.integrations, "ddos_protection"), false)}"
   direct_connect_enabled             = "${lookup(local.booleans, contains(var.integrations, "direct_connect"), false)}"
   dynamodb_enabled                   = "${lookup(local.booleans, contains(var.integrations, "dynamodb"), false)}"
@@ -110,6 +111,11 @@ module "dd_integration_code_deploy" {
 module "dd_integration_database_migration_service" {
   enable_integration = "${local.database_migration_service_enabled}"
   source             = "./integrations/database_migration_service"
+}
+
+module "dd_integration_datadog_logging" {
+  enable_integration = "${local.datadog_logging_enabled}"
+  source             = "./integrations/datadog_logging"
 }
 
 module "dd_integration_ddos_protection" {
